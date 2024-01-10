@@ -9,12 +9,12 @@ import {filterByTag} from 'vc-test-suite-implementations';
 
 const should = chai.should();
 
-// only use implementations with `StatusList2021` issuers.
+// only use implementations with `BitstringStatusList` issuers.
 const {match} = filterByTag({
   property: 'issuers',
-  tags: ['StatusList2021']
+  tags: ['BitstringStatusList']
 });
-describe('StatusList2021 Credentials (Issue "statusPurpose: revocation")',
+describe('BitstringStatusList Credentials (Issue "statusPurpose: revocation")',
   function() {
     this.matrix = true;
     this.report = true;
@@ -33,7 +33,7 @@ describe('StatusList2021 Credentials (Issue "statusPurpose: revocation")',
           issuerResponse = result;
           issuedVc = data;
         });
-        it('MUST issue a VC with SL 2021 "credentialStatus" and ' +
+        it('MUST issue a VC with BitstringStatusList "credentialStatus" and ' +
           '"revocation" status purpose', async function() {
           this.test.cell = {columnId: issuerName, rowId: this.test.title};
           should.exist(issuerResponse);
@@ -60,7 +60,7 @@ describe('StatusList2021 Credentials (Issue "statusPurpose: revocation")',
             // decoded size should be 16kb. For more info see
             // `credentialSubject.encoded` in
             // eslint-disable-next-line max-len
-            // https://w3c-ccg.github.io/vc-status-list-2021/#statuslist2021credential
+            // https://w3c-ccg.github.io/vc-bitstring-status-list/#BitstringStatuslistCredential
             const decodedSize = (decoded.length / 8) / 1024;
             decodedSize.should.equal(16);
           });
@@ -68,7 +68,7 @@ describe('StatusList2021 Credentials (Issue "statusPurpose: revocation")',
     }
   });
 
-describe('StatusList2021 Credentials (Issue "statusPurpose: suspension")',
+describe('BitstringStatusList Credentials (Issue "statusPurpose: suspension")',
   function() {
     this.matrix = true;
     this.report = true;
@@ -87,7 +87,7 @@ describe('StatusList2021 Credentials (Issue "statusPurpose: suspension")',
           issuerResponse = result;
           issuedVc = data;
         });
-        it('MUST issue a VC with SL 2021 "credentialStatus" and ' +
+        it('MUST issue a VC with BitstringStatusList "credentialStatus" and ' +
           '"suspension" status purpose', async function() {
           this.test.cell = {columnId: issuerName, rowId: this.test.title};
           should.exist(issuerResponse);

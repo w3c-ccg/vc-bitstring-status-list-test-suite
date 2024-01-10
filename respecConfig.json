@@ -1,9 +1,9 @@
 {
   "specStatus": "unofficial",
-  "shortName": "status-list-2021-test-suite",
+  "shortName": "vc-bitstring-status-list-test-suite",
   "subtitle": "Test Interoperability Report for Verifiable Credentials status",
-  "github": "https://github.com/w3c-ccg/status-list-2021-test-suite",
-  "edDraftURI": "https://w3c-ccg.github.io/status-list-2021-test-suite",
+  "github": "https://github.com/w3c-ccg/vc-bitstring-status-list-test-suite",
+  "edDraftURI": "https://w3c-ccg.github.io/vc-bitstring-status-list-test-suite",
   "doJsonLd": true,
   "includePermalinks": false,
   "editors": [

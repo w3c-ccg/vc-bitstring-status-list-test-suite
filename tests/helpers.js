@@ -76,7 +76,7 @@ export const createRequestBody = ({vc, setStatus = false, statusPurpose}) => {
     body = {
       credentialId: vc.id,
       credentialStatus: {
-        type: 'StatusList2021Entry',
+        type: 'BitstringStatusListEntry',
         statusPurpose
       }
     };

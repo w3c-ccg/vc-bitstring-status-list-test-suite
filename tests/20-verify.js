@@ -9,13 +9,13 @@ import {filterByTag, filterImplementations} from
 import {shouldFailVerification, shouldPassVerification} from './assertions.js';
 import {klona} from 'klona';
 
-// only use implementations with `StatusList2021` verifiers.
+// only use implementations with `BitstringStatusList` verifiers.
 const {match} = filterByTag({
   property: 'verifiers',
-  tags: ['StatusList2021']
+  tags: ['BitstringStatusList']
 });
 
-describe('StatusList2021 Credentials (Verify)', function() {
+describe('BitstringStatusList Credentials (Verify)', function() {
   this.matrix = true;
   this.report = true;
   this.implemented = [...match.keys()];
@@ -24,7 +24,7 @@ describe('StatusList2021 Credentials (Verify)', function() {
   for(const [verifierName, {verifiers}] of match) {
     describe(verifierName, function() {
       const verifier = verifiers.find(verifier =>
-        verifier.tags.has('StatusList2021'));
+        verifier.tags.has('BitstringStatusList'));
       let validVcForRevocation;
       let validVcForSuspension;
       let setRevocationStatusList;
@@ -54,16 +54,16 @@ describe('StatusList2021 Credentials (Verify)', function() {
         const {data: data2} = await issueVc({issuer: issuer2});
         validVcForSuspension = data2;
       });
-      it('MUST verify a valid "StatusList2021Credential" with "revocation" ' +
-        'status purpose', async function() {
+      it('MUST verify a valid "BitstringStatusListCredential" with ' +
+        '"revocation" status purpose', async function() {
         this.test.cell = {columnId: verifierName, rowId: this.test.title};
         const {result, error, statusCode} = await verifier.post({
           json: createRequestBody({vc: validVcForRevocation})
         });
         shouldPassVerification({result, error, statusCode});
       });
-      it('MUST verify a valid "StatusList2021Credential" with "suspension"' +
-        'status purpose', async function() {
+      it('MUST verify a valid "BitstringStatusListCredential" with ' +
+        '"suspension" status purpose', async function() {
         this.test.cell = {columnId: verifierName, rowId: this.test.title};
         const {result, error, statusCode} = await verifier.post({
           json: createRequestBody({vc: validVcForSuspension})
